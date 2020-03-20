@@ -57,10 +57,10 @@ public class Test_01_AssertRedirectedUrl extends Base{
     }
 
     @Test
-    public void sendGetRequest() throws ParseException {
-        String url = "https://www.googleapis.com/youtube/v3/channels?part=contentDetails&mine=true";
+    public void SimpleSample() throws ParseException {
+        String url = URLs.SIMPLE_URL;
         RequestSpecification rs = RestAssured.given();
-        Response res= rs.get("https://www.googleapis.com/youtube/v3/channels?part=contentDetails&mine=true");
+        Response res= rs.get(url);
         va.validateJson(res.getBody().asString());
         //System.out.println(res.getBody().asString());
         System.out.println(res.body().jsonPath().getList("error.errors"));
