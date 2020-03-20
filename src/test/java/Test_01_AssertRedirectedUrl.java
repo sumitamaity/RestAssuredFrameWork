@@ -1,18 +1,19 @@
 import com.google.zxing.NotFoundException;
+import com.sm.constants.URLs;
+import com.sm.constants.util.Base;
+import com.sm.util.Validation;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-public class Test_01_AssertRedirectedUrl extends Base{
+public class Test_01_AssertRedirectedUrl extends Base {
   RequestBuild rb;
   Validation va;
 
@@ -57,10 +58,10 @@ public class Test_01_AssertRedirectedUrl extends Base{
     }
 
     @Test
-    public void sendGetRequest() throws ParseException {
-        String url = "https://www.googleapis.com/youtube/v3/channels?part=contentDetails&mine=true";
+    public void SimpleSample() throws ParseException {
+        String url = URLs.SIMPLE_URL;
         RequestSpecification rs = RestAssured.given();
-        Response res= rs.get("https://www.googleapis.com/youtube/v3/channels?part=contentDetails&mine=true");
+        Response res= rs.get(url);
         va.validateJson(res.getBody().asString());
         //System.out.println(res.getBody().asString());
         System.out.println(res.body().jsonPath().getList("error.errors"));

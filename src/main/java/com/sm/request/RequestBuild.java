@@ -1,12 +1,12 @@
+package com.sm.request;
+
+import com.sm.constants.URLs;
 import io.restassured.RestAssured;
-import io.restassured.http.Header;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.commons.codec.binary.Base64;
 
-import java.awt.*;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
@@ -42,7 +42,7 @@ public class RequestBuild {
     public void saveImage(Response response) throws IOException {
       byte a[]= response.asByteArray();
 
-      String file_path=URLs.FILE_PATH;
+      String file_path= URLs.FILE_PATH;
       File file = new File(file_path);
         FileOutputStream fout= new FileOutputStream(file);
         //decodeImage(a,fout);
